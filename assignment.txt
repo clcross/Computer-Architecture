@@ -1,0 +1,9 @@
+Muxes: Therealsammyt, Neitzel, Trever, me(Ryan)
+Decoder: Jeffery Sher
+Full Adder: Brian, Matt, Chris
+Ripple Carry Adder: Amber, Cameron, Cody scholl, Sam
+Equals: Blake, Xavier, Hailey
+Sign Externder: Pyrocamper, Jordand, Holland, Emily
+Data Memory / Instruction Memory: Whitney, Julia
+Control ROM: Cody, brian
+ALU: Mickey, derrik, jacob, that guy

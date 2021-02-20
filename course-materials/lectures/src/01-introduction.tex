@@ -1,0 +1,440 @@
+%Paul E. West
+
+%\documentclass[xcolor=svgnames]{beamer}
+\documentclass{beamer}
+\usepackage[boxed,vlined,figure]{algorithm2e}
+
+%\usecolortheme[named=FireBrick]{structure}
+%\usecolortheme[named=black]{structure}
+%\usecolortheme{beetle}
+%\usecolortheme{beaver}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\setbeamercolor{background canvas}{bg=Gold!25}
+%\setbeamercolor{background canvas}{bg=Black!100}
+%\setbeamercolor{foreground}{bg=Gold!25}
+%\setbeamercolor{normal text}{fg=green,bg=black}
+%\setbeamercolor*{palette primary}{use=structure,fg=green,bg=black}
+
+\mode<presentation>{
+    \usetheme{Darmstadt}
+    \setbeamercovered{invisible}
+    %\setbeamercovered{transparent}
+    \setbeamercolor*{palette primary}{use=structure,fg=white,bg=blue}
+    \setbeamercolor*{palette secondary}{use=structure,fg=white,bg=blue}
+    \setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=blue}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+%\usepackage{epsfig}
+\usepackage{ulem}
+\usepackage{color,soul}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{url,hyperref}
+\definecolor{beamer@blendedblue}{rgb}{1,.6,.2}
+%\usepackage{tikz}
+%\usetikzlibrary{shapes}
+%\usetikzlibrary{arrows}
+%\tikzstyle{block}=[draw opacity=0.7, line width=1.4cm]
+\usepackage{listings}
+\lstset{language=C}
+\lstset{tabsize=4}
+\lstset{basicstyle=\tiny}
+
+
+%\usecolortheme[overlystylish]{albatross}
+%\usecolortheme[]{lily}
+%\usecolortheme[]{albatross}
+%\usecolortheme[]{orchid}
+%\setbeamercolor{normal text}{fg=green!10}
+
+\title{CSCI 330: Computer Architecture}
+\author{Dr. Paul E. West}
+
+\institute{
+  Department of Computer Science\\
+  Charleston Southern University
+}
+
+\date{January 13, 2020}
+
+\subject{Computer Architecture}
+%\keywords{Performance Counters, Multicore}
+
+%\pgfdeclareimage[height=1.0cm]{university-logo}{../imgs/csu-logo}
+\pgfdeclareimage[height=0.75cm]{university-logo}{../imgs/csu-logo}
+%\pgfdeclareimage[height=0.50cm]{university-logo}{../imgs/csu-logo}
+\logo{\pgfuseimage{university-logo}}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Overview}
+\subsection{}
+
+\begin{frame}{Complex Yet Simple}
+\begin{itemize}
+\item Computers are some of the more complex devices humans have created.
+\item Yet, are simple in many ways.  EX:
+\begin{itemize}
+\item A CPU (where a lot of the ``work'' occurs) is basically a bunch of transistors etched on silicon.
+\item by `a bunch' I mean billions
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{From C to Execution}
+\begin{itemize}
+\item How does the code that you type in go from text to executing on the computer?
+\item How does a piece of silicon turn you ``English-like'' C code into a dynamic computation?
+\item We will explore these in more depth.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Logic}
+\begin{itemize}
+\item The computer executes your program (set of instructions) through electronic signals.
+\item These signals (in general) are executed in steps (clock cycle).
+\item Our job here is to see how this is done and give you an idea of how a computer can be built to do computations.
+\end{itemize}
+\end{frame}
+
+\section{State of Computers}
+\subsection{}
+\begin{frame}{The Computer Revolution}
+\begin{itemize}
+\item Progress in computer technology
+\begin{itemize}
+\item Underpinned by Moore's Law 
+\end{itemize}
+\item Makes novel applications feasible
+\begin{itemize}
+\item Computers in automobiles
+\item Cell phones
+\item Human genome project
+\item World Wide Web
+\item Search Engines
+\end{itemize}
+\item Computers are pervasive
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Classes of Computers}
+\begin{itemize}
+\item Personal computers
+\begin{itemize}
+\item General purpose, variety of software
+\item Subject to unit cost vs performance tradeoff
+\end{itemize}
+\item Server computers
+\begin{itemize}
+\item Network based
+\item High capacity, performance, reliability
+\item Range from small servers to building sized
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Classes of Computers}
+\begin{itemize}
+\item Supercomputers
+\begin{itemize}
+\item High-end scientific and engineering calculations
+\item Highest capability but represent a small fraction of the overall computer market 
+\item \url{http://www.top500.org} maintains a list
+\end{itemize}
+\item Embedded computers
+\begin{itemize}
+\item Hidden as components of systems
+\item Stringent power/performance/cost constraints
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{}
+\begin{frame}{PC Mobile Tablet Console Market Share}
+\includegraphics[width=1.0\textwidth]{../imgs/pc-mobile-sales.png}
+\end{frame}
+
+\begin{frame}{Mobile Devices and Cloud}
+\begin{itemize}
+\item Personal Mobile Device (PMD)
+\begin{itemize}
+\item Battery operated
+\item Connects to the Internet
+\item Hundreds of dollars
+\item Smart phones, tablets, electronic glasses, smart watches
+\end{itemize}
+\item Cloud computing
+\begin{itemize}
+\item Warehouse Scale Computers (WSC)
+\item Software as a Service (SaaS)
+\item Portion of software run on a PMD and a portion run in the Cloud
+\item Amazon and Google
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Course}
+\subsection{}
+\begin{frame}{What you Will Learn}
+\begin{itemize}
+\item How programs are translated into the machine language
+\item And how the hardware executes them
+\item The hardware/software interface
+\item What determines program performance
+\item And how it can be improved
+\item How hardware designers improve performance
+\item What is parallel processing
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Patterns to Keep in Mind}
+\begin{itemize}
+\item The three Ps for improving performance:
+\begin{itemize}
+\item Parallelism
+\item Pipelining
+\item Prediction
+\end{itemize}
+\item Small is fast, Big is slow
+\item You must think in parallel!
+\item Verilog
+\begin{itemize}
+\item A different language used to describe processors
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\section{Administrativa}
+\subsection{}
+\begin{frame}{About the Professor}
+\begin{itemize}
+\item PhD from Florida State University in Computer Science
+\item Faculty Experience:
+\begin{itemize}
+\item Charleston Southern: Assistant 2015-Present
+\item College of Charleston: Adjunct 2013-2014
+\end{itemize}
+\item Work Experience:
+\begin{itemize}
+\item Naval Research Lab: 2018 - Present
+\item Google (2014): Android Bluetooth/Wi-Fi/Telephony
+\item SPAWAR (2009-2014, 2015): Communication systems
+\item DenimGroup (2004-2005): Start-up; web design and network security
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Github}
+\begin{itemize}
+\item The programming parts of your assignments will be submitted through Github.
+\item Please create an account on Github and email me your username.
+\item More instruction to follow...
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ScrumDo}
+\begin{itemize}
+\item A board to organize our workflow for this course.
+\item We will use if it will allow us to create enough users.
+\item Lets find out...
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Syllabus}
+Lets go over the syllabus...
+\end{frame}
+
+\section{Architecture Overview}
+\subsection{}
+
+\begin{frame}{Discussion}
+\begin{itemize}
+\item Any questions about the syllabus or the course?
+\item Have you seen anything in the news?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Below Your Program}
+\begin{columns}
+\column{0.40\textwidth}
+\includegraphics[width=1.0\textwidth]{../imgs/below-your-program.png}
+\column{0.60\textwidth}
+\begin{itemize}
+\item Application software
+\begin{itemize}
+\item Written in high-level language
+\end{itemize}
+\item System software
+\begin{itemize}
+\item Compiler: translates HLL code to machine code
+\item Operating System: service code
+\begin{itemize}
+\item Handling input/output
+\item Managing memory and storage
+\item Scheduling tasks and sharing resources
+\end{itemize}
+\end{itemize}
+\item Hardware
+\begin{itemize}
+\item Processor, memory, I/O controllers
+\end{itemize}
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Levels of Code}
+\begin{columns}[c]
+\column{0.60\textwidth}
+\begin{itemize}
+\item High-level language
+\begin{itemize}
+\item Level of abstraction closer to problem domain
+\item Provides for productivity and portability 
+\end{itemize}
+\item Assembly language
+\begin{itemize}
+\item Textual representation of instructions
+\end{itemize}
+\item Hardware representation
+\begin{itemize}
+\item Binary digits (bits)
+\item Encoded instructions and data
+\end{itemize}
+\end{itemize}
+\column{0.40\textwidth}
+\includegraphics[width=1.0\textwidth]{../imgs/levels-of-code.png}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Inside the Processor (CPU)}
+\begin{itemize}
+\item Datapath: performs operations on data
+\item Control: sequences datapath, memory, ...
+\item Cache memory
+\begin{itemize}
+\item Small fast SRAM memory for immediate access to data
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Intel Haswell}
+\includegraphics[width=1.0\textwidth]{../imgs/coffee-lake.png}
+\end{frame}
+
+\begin{frame}{Apple A13}
+\includegraphics[width=0.8\textwidth]{../imgs/a13.png}
+\end{frame}
+
+\begin{frame}{Safe Place for Data}
+\begin{itemize}
+\item Volatile main memory
+\begin{itemize}
+\item Loses instructions and data when power off
+\end{itemize}
+\item Non-volatile secondary memory
+\begin{itemize}
+\item Magnetic disk
+\item Flash memory
+\item Optical disk (CDROM, DVD)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Networks}
+\begin{itemize}
+\item Communication, resource sharing, nonlocal access
+\item Local area network (LAN): Ethernet
+\item Wide area network (WAN): the Internet
+\item Wireless network: WiFi, Bluetooth
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Technology Trends}
+\begin{columns}[c]
+\column{0.50\textwidth}
+\begin{itemize}
+\item Electronics technology continues to evolve
+\begin{itemize}
+\item Increased capacity and performance
+\item Reduced cost
+\end{itemize}
+\end{itemize}
+\column{0.50\textwidth}
+\includegraphics[width=1.0\textwidth]{../imgs/tech-trends.png}
+\end{columns}
+\begin{tabular}{l l r}
+Year & Technology & Relative performance/cost \\
+1951 & Vacuum tube & 1 \\
+1965 & Transistor & 35 \\
+1975 & Integrated circuit (IC) & 900 \\
+1995 & Very large scale IC (VLSI) & 2,400,000 \\
+2013 & Ultra large scale IC & 250,000,000,000 \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Semiconductor}
+\begin{itemize}
+\item Silicon:  semiconductor
+\item Add materials to transform properties:
+\begin{itemize}
+\item Conductors
+\item Insulators
+\item Switch
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Manufacturing ICs}
+\includegraphics[width=1.0\textwidth]{../imgs/manufacture-ics.png}
+\begin{itemize}
+\item Yield: proportion of working dies per wafer
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Intel Core i7 Wafer}
+\includegraphics[width=0.5\textwidth]{../imgs/i7-wafer.png}
+\begin{itemize}
+\item 300mm wafer, 280 chips, 32nm technology
+\item Each chip is 20.7 x 10.5 mm
+\end{itemize}
+\end{frame}
+
+\section{Verilog}
+\subsection{}
+
+\begin{frame}
+\begin{itemize}
+\item We will be using Verilog throughout the course
+\item I \textbf{\textit{highly}} recommend Virtualizing Ubuntu and running everything from there.
+\item \textbf{Homework:} Please download iVerilog (Icarus Verilog) and be ready to start coding next class
+\begin{itemize}
+\item Icarus Verilog: Open source/free Verilog tool chain
+\item Linux: use your package manager or \url{http://iverilog.icarus.com/}
+\item Windows: \url{http://bleyer.org/icarus/}
+\end{itemize}
+\item Verilog is a industry language used to design processors
+\item We will be building a simplified x86 processor
+\begin{itemize}
+\item x86 = 32-bit processor, which is the root of virtually all PCs today.
+\item modern day CPUs use x86\_64, a 64-bit version of x86.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\end{document}

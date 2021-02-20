@@ -1,0 +1,110 @@
+#! /usr/local/Cellar/icarus-verilog/10.3/bin/vvp
+:ivl_version "10.3 (stable)" "(v10_3)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x7fd328504900 .scope module, "Gated_SR_latch_test" "Gated_SR_latch_test" 2 1;
+ .timescale 0 0;
+v0x7fd32851be00_0 .var "C", 0 0;
+v0x7fd32851be90_0 .net "Q", 0 0, L_0x7fd32851c6c0;  1 drivers
+v0x7fd32851bf20_0 .var "R", 0 0;
+v0x7fd32851bff0_0 .var "S", 0 0;
+v0x7fd32851c0a0_0 .net "notQ", 0 0, L_0x7fd32851c880;  1 drivers
+S_0x7fd32850b9d0 .scope module, "DUT" "Gated_SR_latch" 2 6, 3 1 0, S_0x7fd328504900;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "C"
+    .port_info 1 /INPUT 1 "S"
+    .port_info 2 /INPUT 1 "R"
+    .port_info 3 /OUTPUT 1 "Q"
+    .port_info 4 /OUTPUT 1 "notQ"
+L_0x7fd32851c170/d .functor NAND 1, v0x7fd32851be00_0, v0x7fd32851bff0_0, C4<1>, C4<1>;
+L_0x7fd32851c170 .delay 1 (2,2,2) L_0x7fd32851c170/d;
+L_0x7fd32851c2c0/d .functor NAND 1, v0x7fd32851be00_0, v0x7fd32851bf20_0, C4<1>, C4<1>;
+L_0x7fd32851c2c0 .delay 1 (2,2,2) L_0x7fd32851c2c0/d;
+L_0x7fd32851c400/d .functor NOT 1, L_0x7fd32851c170, C4<0>, C4<0>, C4<0>;
+L_0x7fd32851c400 .delay 1 (1,1,1) L_0x7fd32851c400/d;
+L_0x7fd32851c540/d .functor NOT 1, L_0x7fd32851c2c0, C4<0>, C4<0>, C4<0>;
+L_0x7fd32851c540 .delay 1 (1,1,1) L_0x7fd32851c540/d;
+L_0x7fd32851c6c0/d .functor NAND 1, L_0x7fd32851c880, L_0x7fd32851c540, C4<1>, C4<1>;
+L_0x7fd32851c6c0 .delay 1 (2,2,2) L_0x7fd32851c6c0/d;
+L_0x7fd32851c880/d .functor NAND 1, L_0x7fd32851c6c0, L_0x7fd32851c400, C4<1>, C4<1>;
+L_0x7fd32851c880 .delay 1 (2,2,2) L_0x7fd32851c880/d;
+v0x7fd328504d40_0 .net "C", 0 0, v0x7fd32851be00_0;  1 drivers
+v0x7fd32851b7f0_0 .net "CnandR", 0 0, L_0x7fd32851c2c0;  1 drivers
+v0x7fd32851b890_0 .net "CnandS", 0 0, L_0x7fd32851c170;  1 drivers
+v0x7fd32851b920_0 .net "Q", 0 0, L_0x7fd32851c6c0;  alias, 1 drivers
+v0x7fd32851b9c0_0 .net "R", 0 0, v0x7fd32851bf20_0;  1 drivers
+v0x7fd32851baa0_0 .net "S", 0 0, v0x7fd32851bff0_0;  1 drivers
+v0x7fd32851bb40_0 .net "notQ", 0 0, L_0x7fd32851c880;  alias, 1 drivers
+v0x7fd32851bbe0_0 .net "notR", 0 0, L_0x7fd32851c540;  1 drivers
+v0x7fd32851bc80_0 .net "notS", 0 0, L_0x7fd32851c400;  1 drivers
+    .scope S_0x7fd328504900;
+T_0 ;
+    %vpi_call 2 10 "$display", "Gated-SR-latch" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7fd32851be00_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7fd32851bff0_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7fd32851bf20_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 16 "$display", "C = %d, S = %d, R = %d, Q = %d, notQ = %d", v0x7fd32851be00_0, v0x7fd32851bff0_0, v0x7fd32851bf20_0, v0x7fd32851be90_0, v0x7fd32851c0a0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7fd32851be00_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7fd32851bff0_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7fd32851bf20_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 22 "$display", "C = %d, S = %d, R = %d, Q = %d, notQ = %d", v0x7fd32851be00_0, v0x7fd32851bff0_0, v0x7fd32851bf20_0, v0x7fd32851be90_0, v0x7fd32851c0a0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7fd32851be00_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7fd32851bff0_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7fd32851bf20_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 28 "$display", "C = %d, S = %d, R = %d, Q = %d, notQ = %d", v0x7fd32851be00_0, v0x7fd32851bff0_0, v0x7fd32851bf20_0, v0x7fd32851be90_0, v0x7fd32851c0a0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7fd32851be00_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7fd32851bff0_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7fd32851bf20_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 34 "$display", "C = %d, S = %d, R = %d, Q = %d, notQ = %d", v0x7fd32851be00_0, v0x7fd32851bff0_0, v0x7fd32851bf20_0, v0x7fd32851be90_0, v0x7fd32851c0a0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7fd32851be00_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7fd32851bff0_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7fd32851bf20_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 40 "$display", "C = %d, S = %d, R = %d, Q = %d, notQ = %d", v0x7fd32851be00_0, v0x7fd32851bff0_0, v0x7fd32851bf20_0, v0x7fd32851be90_0, v0x7fd32851c0a0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7fd32851be00_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7fd32851bff0_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7fd32851bf20_0, 0;
+    %delay 14, 0;
+    %vpi_call 2 46 "$display", "C = %d, S = %d, R = %d, Q = %d, notQ = %d", v0x7fd32851be00_0, v0x7fd32851bff0_0, v0x7fd32851bf20_0, v0x7fd32851be90_0, v0x7fd32851c0a0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7fd32851be00_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7fd32851bff0_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7fd32851bf20_0, 0;
+    %delay 14, 0;
+    %vpi_call 2 52 "$display", "C = %d, S = %d, R = %d, Q = %d, notQ = %d", v0x7fd32851be00_0, v0x7fd32851bff0_0, v0x7fd32851bf20_0, v0x7fd32851be90_0, v0x7fd32851c0a0_0 {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "C9-7-test.v";
+    "C9-7.v";

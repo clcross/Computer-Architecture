@@ -1,0 +1,181 @@
+%Paul E. West
+
+%\documentclass[xcolor=svgnames]{beamer}
+\documentclass{beamer}
+\usepackage[boxed,vlined,figure]{algorithm2e}
+
+%\usecolortheme[named=FireBrick]{structure}
+%\usecolortheme[named=black]{structure}
+%\usecolortheme{beetle}
+%\usecolortheme{beaver}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\setbeamercolor{background canvas}{bg=Gold!25}
+%\setbeamercolor{background canvas}{bg=Black!100}
+%\setbeamercolor{foreground}{bg=Gold!25}
+%\setbeamercolor{normal text}{fg=green,bg=black}
+%\setbeamercolor*{palette primary}{use=structure,fg=green,bg=black}
+
+\mode<presentation>{
+    \usetheme{Darmstadt}
+    \setbeamercovered{invisible}
+    %\setbeamercovered{transparent}
+    \setbeamercolor*{palette primary}{use=structure,fg=white,bg=blue}
+    \setbeamercolor*{palette secondary}{use=structure,fg=white,bg=blue}
+    \setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=blue}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+%\usepackage{epsfig}
+\usepackage{ulem}
+\usepackage{color,soul}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{url,hyperref}
+\definecolor{beamer@blendedblue}{rgb}{1,.6,.2}
+%\usepackage{tikz}
+%\usetikzlibrary{shapes}
+%\usetikzlibrary{arrows}
+%\tikzstyle{block}=[draw opacity=0.7, line width=1.4cm]
+\usepackage{listings}
+\lstset{language=C}
+\lstset{tabsize=4}
+\lstset{basicstyle=\tiny}
+
+
+%\usecolortheme[overlystylish]{albatross}
+%\usecolortheme[]{lily}
+%\usecolortheme[]{albatross}
+%\setbeamercolor{normal text}{fg=green!10}
+
+\title{HPC Survey}
+\author{Dr. Paul E. West}
+
+\institute{
+  Department of Computer Science\\
+  Charleston Southern University
+}
+
+\date{April 9, 2019}
+
+\subject{Computer Architecture}
+%\keywords{Performance Counters, Multicore}
+
+%\pgfdeclareimage[height=1.0cm]{university-logo}{../imgs/csu-logo}
+\pgfdeclareimage[height=0.75cm]{university-logo}{../imgs/csu-logo}
+%\pgfdeclareimage[height=0.50cm]{university-logo}{../imgs/csu-logo}
+\logo{\pgfuseimage{university-logo}}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Assignment}
+\subsection{}
+\begin{frame}{Survey}
+\begin{itemize}
+\item The last day of class will be a survey of different High Performance Computing (HPC) technologies and Architecture related security vulnerabilities.
+\item I will present on the topics of MPI, OpenCL, and RowHammer.
+\item Last day of class is April 28.
+\item You will present on Monday April 28, 2020.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Your Choice}
+HPC
+\begin{columns}[c]
+\column{0.25\textwidth}
+\begin{itemize}
+\item Nomad
+\item Hadoop
+\item Spark
+\item Chapel
+\item UPC
+\end{itemize}
+\column{0.25\textwidth}
+\begin{itemize}
+\item Charm++
+\item GASNet
+\item Condor
+\item CORBA
+\item ARMCI
+\end{itemize}
+\column{0.5\textwidth}
+Security
+\begin{itemize}
+\item Buffer Overflow
+\item Return Oriented Programming (ROPping)
+\item Rootkits
+\item Cache Side Channel Attacks
+\end{itemize}
+\end{columns}
+\begin{itemize}
+\item There are others, please email me an idea if you wish to present something else.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{HPC Questions to Answer}
+\begin{itemize}
+\item What is it?
+\item How does it work?
+\item How does it help HPC?
+\item How does it relate (or use) MPI, BLAS, and OpenCL?
+\item Why is the software package useful over (or in conjunction with) MPI/BLAS?
+\item How popular is it? Who uses it?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Security Questions to Answer}
+\begin{itemize}
+\item What is it?
+\item What type of vulnerability is it?
+\item How does it work?
+\item How does archiecture play into the issue?
+\item Is there a way to patch the problem?  Are there work arounds?
+\item How concerned should we be?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Presentation}
+\begin{itemize}
+\item 1 person per topic
+\item 10 - 15 minutes
+\item Monday April 28, 2019
+\item Topic selection is FCFS, starting now.
+\item You may take slides from the internet (like I have done with MPI, OpenCL, \& RowHammer.) Be sure to site!
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{Event Based Processor}
+%\begin{columns}[c]
+%\column{0.25\textwidth}
+%\begin{block}{OS driven Execution}
+    %\includegraphics[width=1.0\textwidth]{diagrams/normproc.png}
+%\end{block}
+%\column{0.25\textwidth}
+%\begin{block}{Event Driven Execution}
+    %\includegraphics[width=1.0\textwidth]{diagrams/eventproc.png}
+%\end{block}
+%\column{0.5\textwidth}
+%\begin{itemize}
+    %\item Normal execution: kernel/software driven
+    %\item Event based : event driven
+    %\item Performance monitoring is event based
+    %\item Next task based on event not scheduled by kernel
+    %\item 5.92 times speedup for control dominated programs
+%\end{itemize}
+%\end{columns}
+%\end{frame}
+
+\end{document}

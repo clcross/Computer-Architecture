@@ -1,0 +1,110 @@
+#! /usr/local/Cellar/icarus-verilog/10.3/bin/vvp
+:ivl_version "10.3 (stable)" "(v10_3)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x7f9213c0d240 .scope module, "two_one_multi_test" "two_one_multi_test" 2 1;
+ .timescale 0 0;
+v0x7f9213c1d820_0 .var "A", 0 0;
+v0x7f9213c1d8c0_0 .var "B", 0 0;
+v0x7f9213c1d970_0 .net "C", 0 0, L_0x7f9213c1df00;  1 drivers
+v0x7f9213c1da40_0 .var "S", 0 0;
+S_0x7f9213c0d3a0 .scope module, "DUT" "two_one_multi" 2 6, 3 1 0, S_0x7f9213c0d240;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "S"
+    .port_info 1 /INPUT 1 "A"
+    .port_info 2 /INPUT 1 "B"
+    .port_info 3 /OUTPUT 1 "C"
+L_0x7f9213c1daf0/d .functor NOT 1, v0x7f9213c1da40_0, C4<0>, C4<0>, C4<0>;
+L_0x7f9213c1daf0 .delay 1 (1,1,1) L_0x7f9213c1daf0/d;
+L_0x7f9213c1dc00/d .functor AND 1, L_0x7f9213c1daf0, v0x7f9213c1d820_0, C4<1>, C4<1>;
+L_0x7f9213c1dc00 .delay 1 (2,2,2) L_0x7f9213c1dc00/d;
+L_0x7f9213c1ddc0/d .functor AND 1, v0x7f9213c1da40_0, v0x7f9213c1d8c0_0, C4<1>, C4<1>;
+L_0x7f9213c1ddc0 .delay 1 (2,2,2) L_0x7f9213c1ddc0/d;
+L_0x7f9213c1df00/d .functor OR 1, L_0x7f9213c1dc00, L_0x7f9213c1ddc0, C4<0>, C4<0>;
+L_0x7f9213c1df00 .delay 1 (2,2,2) L_0x7f9213c1df00/d;
+v0x7f9213c0d560_0 .net "A", 0 0, v0x7f9213c1d820_0;  1 drivers
+v0x7f9213c1d3d0_0 .net "B", 0 0, v0x7f9213c1d8c0_0;  1 drivers
+v0x7f9213c1d470_0 .net "C", 0 0, L_0x7f9213c1df00;  alias, 1 drivers
+v0x7f9213c1d520_0 .net "S", 0 0, v0x7f9213c1da40_0;  1 drivers
+v0x7f9213c1d5c0_0 .net "SandB", 0 0, L_0x7f9213c1ddc0;  1 drivers
+v0x7f9213c1d6a0_0 .net "notS", 0 0, L_0x7f9213c1daf0;  1 drivers
+v0x7f9213c1d740_0 .net "notSandA", 0 0, L_0x7f9213c1dc00;  1 drivers
+    .scope S_0x7f9213c0d240;
+T_0 ;
+    %vpi_call 2 10 "$display", "2x1 Multiplexer" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7f9213c1da40_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7f9213c1d820_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7f9213c1d8c0_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 16 "$display", "S = %d, A = %d, B = %d, C = %d", v0x7f9213c1da40_0, v0x7f9213c1d820_0, v0x7f9213c1d8c0_0, v0x7f9213c1d970_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7f9213c1da40_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7f9213c1d820_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7f9213c1d8c0_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 22 "$display", "S = %d, A = %d, B = %d, C = %d", v0x7f9213c1da40_0, v0x7f9213c1d820_0, v0x7f9213c1d8c0_0, v0x7f9213c1d970_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7f9213c1da40_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7f9213c1d820_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7f9213c1d8c0_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 28 "$display", "S = %d, A = %d, B = %d, C = %d", v0x7f9213c1da40_0, v0x7f9213c1d820_0, v0x7f9213c1d8c0_0, v0x7f9213c1d970_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7f9213c1da40_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7f9213c1d820_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7f9213c1d8c0_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 34 "$display", "S = %d, A = %d, B = %d, C = %d", v0x7f9213c1da40_0, v0x7f9213c1d820_0, v0x7f9213c1d8c0_0, v0x7f9213c1d970_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7f9213c1da40_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7f9213c1d820_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7f9213c1d8c0_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 40 "$display", "S = %d, A = %d, B = %d, C = %d", v0x7f9213c1da40_0, v0x7f9213c1d820_0, v0x7f9213c1d8c0_0, v0x7f9213c1d970_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7f9213c1da40_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7f9213c1d820_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7f9213c1d8c0_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 46 "$display", "S = %d, A = %d, B = %d, C = %d", v0x7f9213c1da40_0, v0x7f9213c1d820_0, v0x7f9213c1d8c0_0, v0x7f9213c1d970_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7f9213c1da40_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7f9213c1d820_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x7f9213c1d8c0_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 52 "$display", "S = %d, A = %d, B = %d, C = %d", v0x7f9213c1da40_0, v0x7f9213c1d820_0, v0x7f9213c1d8c0_0, v0x7f9213c1d970_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7f9213c1da40_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7f9213c1d820_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x7f9213c1d8c0_0, 0;
+    %delay 7, 0;
+    %vpi_call 2 58 "$display", "S = %d, A = %d, B = %d, C = %d", v0x7f9213c1da40_0, v0x7f9213c1d820_0, v0x7f9213c1d8c0_0, v0x7f9213c1d970_0 {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "2x1multiplexer_test.v";
+    "2x1multiplexer.v";

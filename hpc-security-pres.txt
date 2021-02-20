@@ -1,0 +1,31 @@
+Mark Neitzel - hadoop
+Sam Wade - chapel
+oromis - Condor
+SinRou - rootkit
+Matt Yanzer - CORBA
+Jeffery - Return Oriented Programming (ROPping)
+DROPxHAWK - Buffer Overflow
+DMA attack - Holland
+Legion Programming System - Blake
+Thunderclap (cell phone/IOMMU vulerability)
+Cache Side Channel - trevor
+Spark - Emily
+Microsoft C++AMP - brian2524
+Chapel - Xavier
+UPC - rhinson1
+OpenACC - Freezen
+Hadoop - Hailey
+OpenMP - the real sammy t
+Nomad - Cody S
+Charm++ - Chris Singleton
+HPX (High Performance ParalleX) - Drakethos
+
+What is left:
+GASNet
+ARMCI
+OmpSs
+GPI-Space
+GASPI or PGAS-API
+
+Rust programming language for secure applications
+Foreshadow: Another meltdown like vulnerability
